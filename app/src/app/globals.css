@@ -57,3 +57,36 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  /* Fons decoratiu: cercles difuminats "aleatoris" dibuixats amb radial-gradient
+     de CSS (paleta vermellosa). Substitueix l'antic SVG de 760 KB / 9000 cercles;
+     aquí són ~22 gradients que es pinten un sol cop i no bloquegen el render. */
+  .hero-dots {
+    background-color: #fff1f2;
+    background-image:
+      radial-gradient(circle at 8% 22%, rgba(239, 68, 68, 0.45), transparent 9px),
+      radial-gradient(circle at 17% 68%, rgba(244, 63, 94, 0.35), transparent 6px),
+      radial-gradient(circle at 26% 12%, rgba(248, 113, 113, 0.4), transparent 5px),
+      radial-gradient(circle at 34% 82%, rgba(251, 146, 60, 0.3), transparent 8px),
+      radial-gradient(circle at 42% 40%, rgba(190, 18, 60, 0.35), transparent 4px),
+      radial-gradient(circle at 51% 18%, rgba(239, 68, 68, 0.4), transparent 7px),
+      radial-gradient(circle at 58% 74%, rgba(252, 165, 165, 0.5), transparent 10px),
+      radial-gradient(circle at 63% 33%, rgba(244, 63, 94, 0.3), transparent 5px),
+      radial-gradient(circle at 71% 60%, rgba(220, 38, 38, 0.35), transparent 6px),
+      radial-gradient(circle at 78% 15%, rgba(251, 146, 60, 0.4), transparent 4px),
+      radial-gradient(circle at 85% 48%, rgba(248, 113, 113, 0.45), transparent 8px),
+      radial-gradient(circle at 91% 78%, rgba(244, 63, 94, 0.35), transparent 5px),
+      radial-gradient(circle at 12% 45%, rgba(220, 38, 38, 0.3), transparent 4px),
+      radial-gradient(circle at 22% 90%, rgba(248, 113, 113, 0.4), transparent 7px),
+      radial-gradient(circle at 38% 60%, rgba(190, 18, 60, 0.35), transparent 5px),
+      radial-gradient(circle at 46% 88%, rgba(252, 165, 165, 0.45), transparent 9px),
+      radial-gradient(circle at 55% 52%, rgba(239, 68, 68, 0.3), transparent 4px),
+      radial-gradient(circle at 67% 10%, rgba(244, 63, 94, 0.4), transparent 6px),
+      radial-gradient(circle at 74% 40%, rgba(251, 146, 60, 0.3), transparent 5px),
+      radial-gradient(circle at 82% 68%, rgba(220, 38, 38, 0.35), transparent 7px),
+      radial-gradient(circle at 95% 30%, rgba(248, 113, 113, 0.4), transparent 5px),
+      radial-gradient(circle at 4% 85%, rgba(244, 63, 94, 0.35), transparent 6px),
+      linear-gradient(135deg, #fee2e2, #ffe4e6 45%, #ffedd5);
+  }
+}
