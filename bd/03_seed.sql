@@ -1,6 +1,6 @@
 -- =============================================================================
 -- 03_seed.sql
--- Dades inicials: els 5 professors i les 9 franges horàries del prototip.
+-- Dades inicials: els 6 professors i les 9 franges horàries del prototip.
 --
 -- Executar connectat a la BD del projecte:
 --   psql -U postgres -d workshop_reservas -f bd/03_seed.sql
@@ -10,14 +10,15 @@
 -- time_slots RESTART IDENTITY CASCADE;).
 -- =============================================================================
 
--- Professors (l'ordre d'inserció dóna ids 1..5, que mapegen prof-1..prof-5 del
--- prototip a app/src/lib/data/professors.ts).
+-- Professors (l'ordre d'inserció dóna ids 1..6; els primers 5 mapegen
+-- prof-1..prof-5 del prototip original).
 INSERT INTO professors (name, subject, initials, bio) VALUES
-  ('Ana Martín',   'Frontend & React', 'AM', 'Especialista en interfaces accesibles y design systems.'),
-  ('Bruno Sáez',   'Backend & APIs',   'BS', 'Arquitectura de servicios, Node.js y bases de datos.'),
-  ('Carla Ferrer', 'Producto & UX',    'CF', 'Investigación de usuario y diseño de producto.'),
-  ('David Ortega', 'DevOps & Cloud',   'DO', 'CI/CD, contenedores e infraestructura como código.'),
-  ('Elena Ruiz',   'Data & IA',        'ER', 'Modelos de datos, analítica y machine learning aplicado.');
+  ('Ana Martín',    'Frontend & React', 'AM', 'Especialista en interfaces accesibles y design systems.'),
+  ('Bruno Sáez',    'Backend & APIs',   'BS', 'Arquitectura de servicios, Node.js y bases de datos.'),
+  ('Carla Ferrer',  'Producto & UX',    'CF', 'Investigación de usuario y diseño de producto.'),
+  ('David Ortega',  'DevOps & Cloud',   'DO', 'CI/CD, contenedores e infraestructura como código.'),
+  ('Elena Ruiz',    'Data & IA',        'ER', 'Modelos de datos, analítica y machine learning aplicado.'),
+  ('Pedro Bonilla', 'Testing & QA',     'PB', 'Automatización de tests, integración continua y calidad de código.');
 
 -- Franges horàries (app/src/lib/data/slots.ts).
 INSERT INTO time_slots (slot_time) VALUES
