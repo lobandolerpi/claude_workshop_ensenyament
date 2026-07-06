@@ -7,11 +7,12 @@ import { FeaturedBanner } from "@/components/featured-banner";
 export default function HomePage() {
   return (
     <main className="mx-auto max-w-4xl px-6 py-16">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/img/hero-big.svg"
-        alt="Il·lustració de fons"
-        className="mb-10 h-56 w-full rounded-xl object-cover"
+      {/* Fons decoratiu lleuger: degradat CSS (abans era un SVG de 760 KB amb
+          9000 cercles desenfocats que bloquejava el render). */}
+      <div
+        role="img"
+        aria-label="Il·lustració de fons"
+        className="mb-10 h-56 w-full rounded-xl bg-gradient-to-br from-indigo-100 via-sky-50 to-cyan-100"
       />
 
       <FeaturedBanner />
