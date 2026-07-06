@@ -5,11 +5,12 @@ import Link from "next/link";
 import { CalendarPlus, CalendarX2 } from "lucide-react";
 
 import { useAuth } from "@/lib/auth-context";
-import type { Reservation } from "@/lib/types";
+import type { Reservation, Professor } from "@/lib/types";
 import {
   cancelReservation,
   listReservations,
 } from "@/lib/services/reservations";
+import { getProfessorById } from "@/lib/data/professors";
 import { ProtectedRoute } from "@/components/protected-route";
 import { SiteHeader } from "@/components/site-header";
 import { ReservationCard } from "@/components/reservation-card";
@@ -19,6 +20,9 @@ import { Card, CardContent } from "@/components/ui/card";
 function DashboardContent() {
   const { user } = useAuth();
   const [reservations, setReservations] = React.useState<Reservation[]>([]);
+  const [selectedProfessorId, setSelectedProfessorId] = React.useState<
+    string | null
+  >(null);
 
   const refresh = React.useCallback(() => {
     if (user) setReservations(listReservations(user.id));
@@ -33,6 +37,17 @@ function DashboardContent() {
     cancelReservation(user.id, id);
     refresh();
   }
+
+  const uniqueProfessors = React.useMemo(() => {
+    const professorIds = new Set(reservations.map((r) => r.professorId));
+    return Array.from(professorIds)
+      .map((id) => getProfessorById(id))
+      .filter(Boolean) as Professor[];
+  }, [reservations]);
+
+  const filteredReservations = selectedProfessorId
+    ? reservations.filter((r) => r.professorId === selectedProfessorId)
+    : reservations;
 
   return (
     <div className="min-h-screen">
@@ -75,14 +90,39 @@ function DashboardContent() {
             </CardContent>
           </Card>
         ) : (
-          <div className="space-y-3">
-            {reservations.map((r) => (
-              <ReservationCard
-                key={r.id}
-                reservation={r}
-                onCancel={handleCancel}
-              />
-            ))}
+          <div className="space-y-4">
+            {uniqueProfessors.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  variant={selectedProfessorId === null ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setSelectedProfessorId(null)}
+                >
+                  Todos
+                </Button>
+                {uniqueProfessors.map((prof) => (
+                  <Button
+                    key={prof.id}
+                    variant={
+                      selectedProfessorId === prof.id ? "default" : "outline"
+                    }
+                    size="sm"
+                    onClick={() => setSelectedProfessorId(prof.id)}
+                  >
+                    {prof.name}
+                  </Button>
+                ))}
+              </div>
+            )}
+            <div className="space-y-3">
+              {filteredReservations.map((r) => (
+                <ReservationCard
+                  key={r.id}
+                  reservation={r}
+                  onCancel={handleCancel}
+                />
+              ))}
+            </div>
           </div>
         )}
       </main>

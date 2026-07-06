@@ -30,18 +30,18 @@ export const PROFESSORS: Professor[] = [
     bio: "Investigación de usuario y diseño de producto.",
   },
   {
-    id: "prof-4",
-    name: "David Ortega",
-    subject: "DevOps & Cloud",
-    initials: "DO",
-    bio: "CI/CD, contenedores e infraestructura como código.",
-  },
-  {
     id: "prof-5",
     name: "Elena Ruiz",
     subject: "Data & IA",
     initials: "ER",
     bio: "Modelos de datos, analítica y machine learning aplicado.",
+  },
+  {
+    id: "prof-6",
+    name: "Pedro Bonilla",
+    subject: "Testing & QA",
+    initials: "PB",
+    bio: "Automatització de tests, integració contínua i qualitat de codi.",
   },
 ];
 
