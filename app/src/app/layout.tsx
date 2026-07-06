@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { SessionProvider } from "next-auth/react";
+import { CookieBanner } from "@/components/cookie-banner";
 
 export const metadata: Metadata = {
   title: "Reserva de Sessions de Treball",
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="es" className="antialiased">
       <body className="min-h-screen bg-muted/30">
         <SessionProvider>{children}</SessionProvider>
+        <CookieBanner />
       </body>
     </html>
   );
