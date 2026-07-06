@@ -4,8 +4,9 @@ import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
-  title: "Reserva de Sesiones",
-  description: "Sistema de reserva de sesiones de trabajo con profesores.",
+  title: "Reserva de Sessions de Treball",
+  description:
+    "Reserva sessions 1-a-1 amb els nostres professors i mentors interns en pocs clics.",
 };
 
 export default function RootLayout({
